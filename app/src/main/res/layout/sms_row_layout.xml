@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="80dp"
+    android:background="#708B8B7A">
+    <!--CCFFE6-->
+
+    <ImageView
+        android:id="@+id/sms_image"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/sms_list"/>
+    <TextView
+        android:id="@+id/phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_toRightOf="@id/sms_image"
+        android:text="123456789"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textColor="#000000"/>
+    <TextView
+        android:id="@+id/sms"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_toRightOf="@id/sms_image"
+        android:layout_below="@+id/phone_number"
+        android:text="this is sms content"
+        android:paddingLeft="10dp"
+        android:textColor="#000000"/>
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_toRightOf="@id/sms_image"
+        android:layout_below="@+id/sms"
+        android:text="2015/09/26 23:43"
+        android:textColor="#DD0968A8"
+        android:paddingRight="10dp"
+        android:gravity="right"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#330000"
+        android:layout_below="@+id/sms_image"></View>
+
+</RelativeLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mariusz.scheduledSMS" android:versionCode="1" android:versionName="1.0"
+    android:permission="android.permission.RECEIVE_BOOT_COMPLETED" android:theme="@style/AppTheme">
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/apps_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <receiver android:name="mariusz.scheduledSMS.SMSReceiver" android:process=":SMSService">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <activity
+            android:name="mariusz.scheduledSMS.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name="mariusz.scheduledSMS.SMSService"
+            android:process=":SMSService"
+            android:enabled="true">
+        </service>
+        <service
+            android:name="mariusz.scheduledSMS.SMSSendService"
+            android:process=":SMSService"
+            android:enabled="true">
+        </service>
+
+        <activity
+            android:name="mariusz.scheduledSMS.ShowSms">
+        </activity>
+        <activity android:name="mariusz.scheduledSMS.SMSListActivity"></activity>
+    </application>
+</manifest>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#708B8B7A">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:text="Complete the fields to send a sms"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:background="#1C1C21"/>
+    <RelativeLayout
+        android:id="@+id/phone_row"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/kayboard_icon"
+            android:id="@+id/keyboard_icon"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/phone_book"
+            android:id="@+id/imageView"
+            android:onClick="getPhoneNumberFromBook"/>
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@id/keyboard_icon"
+            android:layout_toLeftOf="@id/imageView"
+            android:paddingLeft="10dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginLeft="11dp"
+            android:hint="input number"
+            android:inputType="phone"
+            android:background="#EAEAFC"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignBottom="@id/phoneNumber"
+            android:background="#000000">
+        </View>
+    </RelativeLayout>
+
+
+    <EditText
+        android:id="@+id/smsBody"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:hint="Write your sms here...."
+        android:gravity="start"
+        android:background="#EAEAFC"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+        <Button android:id="@+id/pickDate"
+            android:layout_width="0px"
+            android:layout_height="50dp"
+            android:layout_weight="1.3"
+            android:text="Change date"
+            style="@style/my_button_style"/>
+
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="0px"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="30dp"
+            android:paddingTop="5dp"
+            android:background="#70E5E5FF"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+        <Button android:id="@+id/pickTime"
+            android:layout_width="0px"
+            android:layout_height="50dp"
+            android:layout_weight="1.3"
+            android:text="Change time"
+            style="@style/my_button_style"/>
+
+        <TextView
+            android:id="@+id/time_text"
+            android:layout_width="0px"
+            android:layout_height="50dp"
+            android:layout_weight="2"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="30dp"
+            android:paddingTop="5dp"
+            android:background="#70E5E5FF"/>
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/smsManager"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Send"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="right"
+        style="@style/my_button_style"/>
+</LinearLayout>
