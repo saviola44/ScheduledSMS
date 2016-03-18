@@ -3,7 +3,7 @@
     <string name="sms_sended">Sent</string>
     <string name="sms_failed">Failed to send</string>
     <string name="sms_scheduled">Scheduled</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_show_sms2">ShowSms2</string>
     <string name="title">Complete the fields to send a sms</string>
