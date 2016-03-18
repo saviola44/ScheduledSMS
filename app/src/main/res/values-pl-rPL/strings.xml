@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Scheduled SMS</string>
+    <string name="sms_sended">Wysłane</string>
+    <string name="sms_failed">Błąd</string>
+    <string name="sms_scheduled">Zaplanowane</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="title_activity_show_sms2">ShowSms2</string>
+    <string name="title">Uzypełnij pola aby wysłac sms</string>
+    <string name="fillNumber">Wprowadź numer</string>
+    <string name="writeSms">Napisz sms tutaj....</string>
+    <string name="changeDate">Zmień date</string>
+    <string name="changeTime">Zmień czas</string>
+    <string name="send">Wyślij</string>
+    <string name="Delete">Usuń</string>
+    <string name="smsSendedok">Twoja wiadomość została wysłanat</string>
+    <string name="smsNotification">Powiadomienie ScheduleSms</string>
+    <string name="smsWillSend">Twoja wiadomość zostanie wysłana</string>
+    <string name="invalidPhone">Nieprawidłowy numer telefonu</string>
+    <string name="failedToSendSms">Nie udało się wysłać wiadomości...</string>
+</resources>
