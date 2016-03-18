@@ -26,7 +26,6 @@ public class SMSSendService extends Service {
         String sms = m.getSms();
         smsManager.sendTextMessage(m.getPhone(),null,m.getSms(),null,null);
         MySMSDBManager mgr = new MySMSDBManager(getApplicationContext());
-        //Toast.makeText(getApplicationContext(), m.getPhone()+ m.getSms(), Toast.LENGTH_LONG).show();
         m.setSended(MainActivity.SMS_SENDED);
         mgr.updateSMSInDatabase(m);
         notify(m);
@@ -41,8 +40,8 @@ public class SMSSendService extends Service {
         int smsIcon = R.drawable.sms;
         long time = System.currentTimeMillis();
         Uri uri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        Notification n = new Notification.Builder(getApplicationContext()).setContentTitle("ScheduleSms notification")
-                .setContentText("Your message has been sent").setUsesChronometer(true).setSound(uri)
+        Notification n = new Notification.Builder(getApplicationContext()).setContentTitle(getString(R.string.smsNotification))
+                .setContentText(getString(R.string.smsSendedok)).setUsesChronometer(true).setSound(uri)
                 .setSmallIcon(smsIcon).setContentIntent(pi).setAutoCancel(true).build();
 
         mgr.notify(0, n);

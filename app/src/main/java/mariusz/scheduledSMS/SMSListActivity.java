@@ -31,7 +31,7 @@ public class SMSListActivity extends Activity {
 
         ListSMSAdapter adapter = new ListSMSAdapter(getApplicationContext(), R.layout.sms_row_layout);
         listView.setAdapter(adapter);
-        int filter=getIntent().getIntExtra("type",0);
+        int filter=getIntent().getIntExtra("type",-1);
 
         for(MessageModel m : list){
             if(m.getSended()==filter){

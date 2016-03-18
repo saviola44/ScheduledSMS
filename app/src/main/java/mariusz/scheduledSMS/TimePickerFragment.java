@@ -1,5 +1,6 @@
 package mariusz.scheduledSMS;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.TimePickerDialog;
@@ -17,6 +18,10 @@ public class TimePickerFragment extends DialogFragment implements
         TimePickerDialog.OnTimeSetListener {
     private MessageModel m;
     private TextView textView;
+    Activity activity;
+    public void setContext(Activity c){
+        this.activity = c;
+    }
     public void setTextView(TextView textView){
         this.textView = textView;
     }
@@ -30,7 +35,7 @@ public class TimePickerFragment extends DialogFragment implements
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
 
-        return new TimePickerDialog(getActivity(), this, mHour,mMinute,true);
+        return new TimePickerDialog(activity, this, mHour,mMinute,true);
     }
 
     @Override

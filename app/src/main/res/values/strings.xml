@@ -6,4 +6,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_show_sms2">ShowSms2</string>
+    <string name="title">Complete the fields to send a sms</string>
+    <string name="fillNumber">input number</string>
+    <string name="writeSms">Write your sms here....</string>
+    <string name="changeDate">Change date</string>
+    <string name="changeTime">Change time</string>
+    <string name="send">Send</string>
+    <string name="Delete">Delete</string>
+    <string name="smsSendedok">Your message has been sent</string>
+    <string name="smsNotification">ScheduleSms notification</string>
+    <string name="smsWillSend">Your sms will be send</string>
+    <string name="invalidPhone">invalid phone number</string>
+    <string name="failedToSendSms">Your sms has failed...</string>
 </resources>

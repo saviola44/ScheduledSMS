@@ -91,6 +91,7 @@ public class MainActivity extends Activity {
                 DialogFragment newFragment = new DatePickerFragment();
                 ((DatePickerFragment) newFragment).setM(smsModel);
                 ((DatePickerFragment) newFragment).setTextView(dateTextView);
+                ((DatePickerFragment) newFragment).setContext(MainActivity.this);
                 newFragment.show(getFragmentManager(), "datePicker");
             }
         });
@@ -101,9 +102,27 @@ public class MainActivity extends Activity {
                 DialogFragment newFragment = new TimePickerFragment();
                 ((TimePickerFragment) newFragment).setM(smsModel);
                 ((TimePickerFragment) newFragment).setTextView(timeTextView);
+                ((TimePickerFragment) newFragment).setContext(MainActivity.this);
                 newFragment.show(getFragmentManager(), "timePicker");
             }
         });
+
+        if (savedInstanceState != null) {
+            DatePickerFragment dpf = (DatePickerFragment) getFragmentManager()
+                    .findFragmentByTag("datePicker");
+            if (dpf != null) {
+                dpf.setContext(MainActivity.this);
+                dpf.setM(smsModel);
+                dpf.setTextView(dateTextView);
+            }
+            TimePickerFragment tpf = (TimePickerFragment) getFragmentManager()
+                    .findFragmentByTag("timePicker");
+            if (tpf != null) {
+                tpf.setContext(MainActivity.this);
+                tpf.setM(smsModel);
+                tpf.setTextView(timeTextView);
+            }
+        }
     }
 
     @Override
@@ -120,13 +139,36 @@ public class MainActivity extends Activity {
         messenger=null;
         super.onStop();
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("phone", phoneNumber.getText().toString());
+        outState.putString("smsBody", smsBody.getText().toString());
+        outState.putString("time", timeTextView.getText().toString());
+        outState.putString("date", dateTextView.getText().toString());
+        outState.putParcelable("smsModel", smsModel);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String p = savedInstanceState.getString("phone");
+        phoneNumber.setText(p);
+        String s = savedInstanceState.getString("smsBody");
+        smsBody.setText(s);
+        String t = savedInstanceState.getString("time");
+        timeTextView.setText(t);
+        String d = savedInstanceState.getString("date");
+        dateTextView.setText(d);
+        smsModel = savedInstanceState.getParcelable("smsModel");
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuItem m1 = menu.add(Menu.NONE, SMS_SCHEDULED_FOR_SENDING, Menu.NONE, R.string.sms_scheduled);
         m1.setIcon(resizeImage(R.drawable.scheduled1, 108, 108));
-
-        //mi.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
-        //getMenuInflater().inflate(R.menu.my_menu_style, menu);
 
         MenuItem m2 = menu.add(0, SMS_SENDED, 0, R.string.sms_sended);
         m2.setIcon(resizeImage(R.drawable.sended1, 108, 108));
@@ -158,7 +200,6 @@ public class MainActivity extends Activity {
         switch (item.getItemId()){
             case SMS_SCHEDULED_FOR_SENDING:
                 i.putExtra("type", SMS_SCHEDULED_FOR_SENDING);
-
                 startActivity(i);
                 return true;
             case SMS_SENDED:
@@ -191,17 +232,16 @@ public class MainActivity extends Activity {
                 msg.setData(bundle);
                 try {
                     messenger.send(msg);
-                    smsModel = new MessageModel(0,"","",0,0,0,0,0,0);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
             }
             else{
-                Toast.makeText(getApplicationContext(), "invalid phone number", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.invalidPhone, Toast.LENGTH_LONG).show();
             }
 
         } catch (Exception ex) {
-            Toast.makeText(getApplicationContext(),"Your sms has failed...",
+            Toast.makeText(getApplicationContext(), R.string.failedToSendSms,
                     Toast.LENGTH_LONG).show();
             ex.printStackTrace();
         }
@@ -214,30 +254,23 @@ public class MainActivity extends Activity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request it is that we're responding to
+        // Sprawdzenie czy requectCode jest nasza odpowiedzia
         if (requestCode == PICK_CONTACT_REQUEST) {
-            // Make sure the request was successful
+            //upewnienie sie czy zakonczylo sie sukcesem
             if (resultCode == RESULT_OK) {
-                // Get the URI that points to the selected contact
+                // Pobranie Uri kontaktu
                 Uri contactUri = data.getData();
-                // We only need the NUMBER column, because there will be only one row in the result
+                //potrzebujemy tylko kolumny z numerem telefonu
                 String[] projection = {ContactsContract.CommonDataKinds.Phone.NUMBER};
-
-                // Perform the query on the contact to get the NUMBER column
-                // We don't need a selection or sort order (there's only one result for the given URI)
-                // CAUTION: The query() method should be called from a separate thread to avoid blocking
-                // your app's UI thread. (For simplicity of the sample, this code doesn't do that.)
-                // Consider using CursorLoader to perform the query.
+                //wykonujemy zapytanie aby otrzymac nasza kolumne
                 Cursor cursor = getContentResolver()
                         .query(contactUri, projection, null, null, null);
                 cursor.moveToFirst();
 
-                // Retrieve the phone number from the NUMBER column
+                //wydobycie ne klumny z numerem telefonu
                 int column = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
                 String number = cursor.getString(column);
                 phoneNumber.setText(number);
-
-                // Do something with the phone number...
             }
         }
     }

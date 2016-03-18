@@ -1,8 +1,10 @@
 package mariusz.scheduledSMS;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -14,6 +16,12 @@ public class DatePickerFragment extends DialogFragment implements
         DatePickerDialog.OnDateSetListener {
     private MessageModel m;
     TextView textView;
+    Activity activity;
+    public void setContext(Activity c){
+
+            this.activity = c;
+
+    }
     public void setTextView(TextView textView){
         this.textView=textView;
     }
@@ -28,7 +36,7 @@ public class DatePickerFragment extends DialogFragment implements
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return new DatePickerDialog(activity, this, year, month, day);
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {

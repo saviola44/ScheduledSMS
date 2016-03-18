@@ -31,7 +31,7 @@ public class SMSService extends Service {
         public void handleMessage(Message msg) {
             switch(msg.what){
                 case SEND_SMS:
-                    Toast.makeText(getApplicationContext(), "Your sms will be send", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.smsWillSend, Toast.LENGTH_LONG).show();
                     //pobranie wiadomosci z intencji
 
                     Bundle bundle = msg.getData();

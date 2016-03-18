@@ -2,6 +2,7 @@ package mariusz.scheduledSMS;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -20,16 +21,19 @@ public class MySMSDBManager {
         messageDB=new MessageDAO(sqLiteDatabase);
     }
     public void addSMSToDatabase(MessageModel m){
-        messageDB.saveSMSInDatabase(m);
+        long id = messageDB.saveSMSInDatabase(m);
+        m.setId(id);
     }
     public List<MessageModel> getAllSMSFromDatabase(){
         return messageDB.getMessagesFromDataBase();
     }
     public void updateSMSInDatabase(MessageModel m){
         messageDB.deleteSMSFromDataBase(m);
+
         messageDB.saveSMSInDatabase(m);
     }
     public void deleteSMSFromDataBase(MessageModel m){
+
         messageDB.deleteSMSFromDataBase(m);
     }
 }

@@ -8,12 +8,12 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by mariusz on 21.09.15.
  */
 public class MessageHelper extends SQLiteOpenHelper {
-
+    public static final String DATABASE_NAME = "sendsms.db";
     public static final int DATABASE_VERSION = 1;
     public static final String TABLE_NAME = "Message_Table"; //nazwa tabeli
 
     MessageHelper(final Context context){
-        super(context,DataConstant.DATABASE_NAME,null,DATABASE_VERSION);
+        super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
     @Override

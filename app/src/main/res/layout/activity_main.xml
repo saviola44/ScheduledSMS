@@ -10,7 +10,7 @@
         android:id="@+id/text"
         android:layout_width="fill_parent"
         android:layout_height="40dp"
-        android:text="Complete the fields to send a sms"
+        android:text="@string/title"
         android:textSize="20dp"
         android:textColor="#FFFFFF"
         android:gravity="center"
@@ -45,7 +45,7 @@
             android:paddingLeft="10dp"
             android:layout_marginRight="11dp"
             android:layout_marginLeft="11dp"
-            android:hint="input number"
+            android:hint="@string/fillNumber"
             android:inputType="phone"
             android:background="#EAEAFC"/>
         <View
@@ -61,7 +61,7 @@
         android:id="@+id/smsBody"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:hint="Write your sms here...."
+        android:hint="@string/writeSms"
         android:gravity="start"
         android:background="#EAEAFC"
         android:layout_marginLeft="5dp"
@@ -80,7 +80,7 @@
             android:layout_width="0px"
             android:layout_height="50dp"
             android:layout_weight="1.3"
-            android:text="Change date"
+            android:text="@string/changeDate"
             style="@style/my_button_style"/>
 
         <TextView
@@ -94,7 +94,6 @@
             android:textSize="30dp"
             android:paddingTop="5dp"
             android:background="#70E5E5FF"/>
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,7 +105,7 @@
             android:layout_width="0px"
             android:layout_height="50dp"
             android:layout_weight="1.3"
-            android:text="Change time"
+            android:text="@string/changeTime"
             style="@style/my_button_style"/>
 
         <TextView
@@ -126,7 +125,7 @@
         android:id="@+id/smsManager"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:text="Send"
+        android:text="@string/send"
         android:layout_marginRight="10dp"
         android:layout_gravity="right"
         style="@style/my_button_style"/>
